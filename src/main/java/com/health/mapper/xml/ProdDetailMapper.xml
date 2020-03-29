@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.health.mapper.ProdDetailMapper">
+
+    <resultMap type="com.health.model.ProdDetail" id="prodDetail"
+               autoMapping="true">
+        <id property="pid" column="p_id" />
+    </resultMap>
+
+    <sql id="prodDetailSql">
+        p_id as pid,
+        p_bigImg as bigImg,
+        p_smallIMG as smallIMG,
+        p_platformPrice as platformPrice,
+        p_grade as grade,
+        p_baoyou as baoyou,
+        p_changdi as changdi,
+        p_level as level,
+        p_baozhiqi as baozhiqi,
+        p_code as code,
+        p_guige as guige,
+        p_details as details
+
+        from prodDetail
+    </sql>
+
+    <sql id="query_prodDetail_where">
+        1=1
+        <if test="pid!=null and pid!=''">
+            and p_id=#{pid}
+        </if>
+
+    </sql>
+    <sql id="query_limit">
+        <if
+                test="(start!=null and start!='' or start == 0) and amount!=null and amount!=''">
+            limit #{start},#{amount}
+        </if>
+    </sql>
+    <insert id="addProdDetail" parameterType="prodDetail"
+            useGeneratedKeys="true"
+            keyProperty="pid">
+      INSERT INTO prodDetail
+      (p_id,p_name)VALUES(#{id},#{name})
+    </insert>
+
+    <select id="queryProdDetail" resultType="prodDetail">
+        select
+        <include refid="prodDetailSql"/>
+        <where>
+            <include refid="query_prodDetail_where"/>
+        </where>
+    </select>
+</mapper>

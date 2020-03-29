@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.health.mapper.ProductMapper">
+
+    <resultMap type="com.health.model.Product" id="product"
+               autoMapping="true">
+        <id property="pid" column="p_id" />
+    </resultMap>
+
+    <sql id="productSql">
+        p_id AS pid,
+        p_category AS pcategory,
+        p_brand AS pbrand,
+        p_name AS pname,
+        p_count AS pcount,
+        p_price AS price,
+        p_status AS pstatus,
+        p_detail AS detail,
+        p_img AS img,
+        p_sales AS sales,
+        p_market_price AS marketPrice
+        from product
+    </sql>
+
+    <sql id="query_product_where">
+        1=1
+        <if test="pid!=null and pid!=''">
+            and p_id=#{pid}
+        </if>
+        <if test="pcategory!=null and pcategory!=''">
+            and p_category = #{pcategory}
+        </if>
+        <if test="pbrand!=null and pbrand!=''">
+            and p_brand=#{pbrand}
+        </if>
+        <if test="pname!=null and pname!=''">
+            and p_name like '%${pname}%'
+        </if>
+        <if test="pcount!=null and pcount!=''">
+            and p_count=#{pcount}
+        </if>
+        <if test="price!=null and price!=''">
+            and p_price = #{price}
+        </if>
+
+        <if test="pstatus!=null and pstatus!=''">
+            and p_status=#{pstatus}
+        </if>
+
+        <if test="prices!=null and prices!=''">
+            and
+            p_price between
+            <foreach collection="prices" index="index" item="p" open=" "
+                     separator="and" close=" ">
+              #{p}
+            </foreach>
+        </if>
+
+        <if test="pbrands!=null and pbrands!=''">
+            and p_brand in
+            <foreach collection="pbrands" item="brand" index="index" open="(" close=")" separator=",">
+                #{brand}
+            </foreach>
+        </if>
+
+    </sql>
+    <sql id="query_limit">
+        <if
+                test="(start!=null and start!='' or start == 0) and amount!=null and amount!=''">
+            limit #{start},#{amount}
+        </if>
+    </sql>
+    <insert id="addProduct" parameterType="product" useGeneratedKeys="true"
+            keyProperty="pid">
+      INSERT INTO product
+      (p_id,p_name)VALUES(#{id},#{name})
+    </insert>
+
+    <select id="queryProduct" resultType="product">
+        select
+        <include refid="productSql"/>
+        <where>
+            <include refid="query_product_where"/>
+        </where>
+        <include refid="query_limit"/>
+    </select>
+
+    <select id="queryProductById" resultType="product">
+        select
+        <include refid="productSql"/>
+        <where>
+            <include refid="query_product_where"/>
+        </where>
+    </select>
+
+    <select id="queryProductByCondition" resultType="product">
+        select
+        <include refid="productSql"/>
+        <where>
+            <include refid="query_product_where"/>
+        </where>
+        <include refid="query_limit"/>
+    </select>
+</mapper>

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>健康养生商城</title>
+    <link rel="shortcut icon" href="../images/favicon.ico" type="x-icon">
+    <link rel="stylesheet" href="../styles/bootstrap.min.css">
+    <link rel="stylesheet" href="../styles/reset.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <!--[if lt IE 9]>
+  <!--html5shiv.js 实现html语义化标签的支持-->
+    <script src="../scripts/html5shiv.js"></script>
+    <!--respond.js实现响应式布局的支持，包括媒体查询等-->
+    <script src="../scripts/respond.min.js"></script>
+    <script src="../scripts/jquery-1.11.1.min.js"></script>
+    <script src="../scripts/jquery-form.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<!--======================================工具栏=======================================-->
+<section class="toolbar">
+    <div class="container">
+        <ul class="leftBar toolbar-left" id="login">
+            <li><span>欢迎! </span></li>
+            <li><a href="/html/login.html">登录</a></li>
+        </ul>
+        <ul class="rightBar toolbar-right">
+            <li class="shop-car"><a href="/html/cart.html">购物车0件</a><i
+                    class="caret"></i></li>
+            <li><a href="javascript:void (0)">我的优惠券</a></li>
+            <li><a href="javascript:void (0)">我的订单</a></li>
+        </ul>
+    </div>
+</section>
+
+<!--======================================logo区=======================================-->
+<header class="container">
+    <div class="logoArea leftBar">
+        <h1>
+            <a class="logo" href="javascript:void (0)">
+                <img src="../images/logo.png" alt="健康养生商城">
+                <span class="logo_text">健康养生商城</span>
+            </a>
+        </h1>
+    </div>
+</header>
+
+<div class="login-bg">
+    <!---==========================================登录=================================-->
+    <div class="container">
+        <div class="login clearfix">
+            <div class="leftBar col-md-6 col-sm-6">
+                <img src="../images/login_show1.jpg" alt="登录">
+            </div>
+            <div class="regBox col-md-6 col-sm-6 col-xs-12">
+                <div class="row">
+                    <ul class="reg_title">
+                        <li class="col-md-6 col-sm-6 col-xs-6 on">
+                            <a href="javascript: void (0)">登录健康养生商城</a>
+                        </li>
+                        <li class="col-md-6 col-sm-6 col-xs-6">
+                            <a href="javascript: void (0)">新用户注册</a>
+                        </li>
+                    </ul>
+                </div>
+                <form class="reg_list visible"
+                      action=""
+                      method="post" id="loginInfo">
+                    <ul>
+                        <li class="clearfix">
+                            <label>登录名</label>
+                            <input type="text" id="loginname" name="username">
+                            <span>请输入您注册的登录名</span>
+                        </li>
+                        <li class="clearfix">
+                            <label>密码</label>
+                            <input type="password" id="loginpassword"
+                                   name="password">
+                            <span>请输入密码</span>
+                        </li>
+                        <li class="agree">
+                            <input class="login-bg" type="button" onclick="login()">
+                        </li>
+                    </ul>
+                </form>
+                <script>
+                    function checkLoginInfo() {
+                        var result = true;
+                        if ($("#loginname").val()=="")
+                        {
+                            $("#loginname").next().css("color","red");
+                            result=false;
+                        }
+
+                        if ($("#loginpassword").val()=="")
+                        {
+                            $("#loginpassword").next().css("color","red");
+                            result=false;
+                        }
+                        return result;
+                    }
+                    function login() {
+                        if (!checkLoginInfo())
+                        {
+                            return;
+                        }
+
+                        $.ajax(
+                            {
+                                url: main_url+"/user/login",
+                                data: $("#loginInfo").serialize(),
+                                type: "post",
+                                dataType: "json",
+                                success: function (data) {
+                                    if (data.success)
+                                    {
+                                        window.location.href =
+                                            main_url+'/html/index.html';
+                                        return;
+                                    }
+                                    $("#loginname").next()[0].innerHTML =
+                                        "帐号或密码错误！";
+                                    $("#loginname").next().css("color","red");
+                                }
+                            });
+                    }
+                </script>
+                <form class="reg_list"
+                      action="" id="register"
+                      method="post">
+                    <ul>
+                        <li class="clearfix">
+                            <label for="firstName">登录名</label>
+                            <input type="text" id="firstName" name="username">
+                            <span>请输入你的账号</span>
+                        </li>
+                        <li class="clearfix">
+                            <label for="password">密码</label>
+                            <input type="password" id="password"
+                                   name="password">
+                            <span>6-16位数字和字母组成,区分大小写</span>
+                        </li>
+                        <li class="clearfix">
+                            <label for="repassword">确认密码</label>
+                            <input type="password" id="repassword">
+                            <span>请重复输入上面的密码</span>
+                        </li>
+                        <li class="clearfix">
+                            <label for="phone">手机</label>
+                            <input type="text" id="phone" name="phone">
+                            <span>请输入常用手机</span>
+                        </li>
+                        <li class="clearfix">
+                            <label for="code">验证码</label>
+                            <input type="text" id="code" name="code">
+                            <span></span>
+                            <span>
+                            <img src="" alt=""> <a
+                                    onclick="sendMsg()">发送验证码</a>
+                        </span>
+                        </li>
+                        <li class="agree clearfix">
+                            <input type="button" class="reg"
+                                   onclick="checkRegister()" id="submit">
+                        </li>
+
+                    </ul>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    function checkPhone() {
+        var phone = $("#register [name='phone']").val();
+        var span = $("#register [name='phone']").next();
+        var patt = /^[^0]\d{10}/i;
+        var result = patt.test(phone);
+        if (!result) {
+            span[0].innerHTML = "手机格式错误!";
+            span.css("color", "red");
+        }
+
+        return result;
+    }
+
+    function checkform() {
+        var result = true;
+        var username = $("#firstName").val();
+        var span = $("#firstName").next();
+        if (username == "")
+        {
+            span.css("color", "red");
+            result = false;
+        }
+        else
+        {
+            span.css("color", "");
+        }
+
+        var password = $("#password").val();
+        span = $("#password").next();
+        var patt = /(?=.*[0-9])(?=.*[a-zA-Z]).{6,16}/i;
+        if (!patt.test(password))
+        {
+            span.css("color", "red");
+            result = false;
+        }
+        else
+        {
+            span.css("color", "");
+        }
+
+        var repassword = $("#repassword").val();
+        span = $("#repassword").next();
+        if (repassword != password)
+        {
+            span[0].innerHTML = "两次密码不一致!";
+            span.css("color", "red");
+            result = false;
+        }
+        else
+        {
+            span[0].innerHTML = "请重复输入上面的密码";
+            span.css("color", "");
+        }
+
+        var phone = $("#phone").val();
+        span = $("#phone").next();
+        var patt = /^[^0]\d{10}/i;
+        if (!patt.test(phone))
+        {
+            span[0].innerHTML = "手机格式错误!";
+            span.css("color", "red");
+            result = false;
+        }
+        else
+        {
+            span[0].innerHTML = "请输入常用手机";
+            span.css("color", "");
+        }
+
+        return result;
+    }
+
+    function sendMsg() {
+        if (!checkPhone()) {
+            return;
+        }
+
+        $.ajax(
+            {
+                url: main_url+"/user/sendMsg",
+                data: $("#register").serialize(),
+                type: "post",
+                dataType: "json",
+                success: function (data) {
+
+                }
+            });
+    }
+
+    function checkRegister() {
+        if (!checkform())
+        {
+            return;
+        }
+
+        $.ajax(
+            {
+                url: main_url+"/user/register",
+                data: $("#register").serialize(),
+                type: "post",
+                dataType: "json",
+                success: function (data) {
+                    if (data.success == false) {
+                        var name = data.messg.name;
+                        var span =
+                            $("#register [name='" + name + "']").next();
+                        span[0].innerHTML =
+                            data.errorInfo;
+                        span.css("color", "red");
+                        return;
+                    }
+
+                    window.location.href = main_url+'/html/login.html';
+                }
+            });
+    }
+</script>
+<script src="../scripts/bootstrap.min.js"></script>
+<script src="../scripts/main.js"></script>
+<script src="../scripts/jquery.jqzoom.js"></script>
+<script src="../scripts/common.js"></script>
+</body>
+</html>

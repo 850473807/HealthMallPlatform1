@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.health.mapper.CategoryMapper">
+
+    <resultMap type="com.health.model.Category" id="category"
+               autoMapping="true">
+        <id property="id" column="c_id" />
+        <result property="name" column="c_name"/>
+    </resultMap>
+
+    <sql id="categorySql">
+        c_id AS id,
+        c_name AS name
+        from category
+    </sql>
+
+    <sql id="query_category_where">
+        1=1
+        <if test="id!=null and id!=''">
+            and c_id=#{id}
+        </if>
+        <if test="name!=null and name!=''">
+            and c_name = #{name}
+        </if>
+    </sql>
+
+    <insert id="addCategory" parameterType="category" useGeneratedKeys="true"
+            keyProperty="id">
+      INSERT INTO category
+      (c_id,c_name)VALUES(#{id},#{name})
+    </insert>
+
+    <select id="queryCategory" resultType="category">
+        select
+        <include refid="categorySql"/>
+        <where>
+            <include refid="query_category_where"/>
+        </where>
+    </select>
+</mapper>

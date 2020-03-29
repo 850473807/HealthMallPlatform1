@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>健康养生商城</title>
+    <link rel="shortcut icon" href="../images/favicon.ico" type="x-icon">
+    <link rel="stylesheet" href="../styles/bootstrap.min.css">
+    <link rel="stylesheet" href="../styles/reset.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <!--[if lt IE 9]>
+    <!--html5shiv.js 实现html语义化标签的支持-->
+    <script src="../scripts/html5shiv.js"></script>
+    <!--respond.js实现响应式布局的支持，包括媒体查询等-->
+    <script src="../scripts/respond.min.js"></script>
+    <script src="../scripts/jquery-1.11.1.min.js"></script>
+    <script src="../scripts/jquery-form.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<!--======================================工具栏=======================================-->
+<section class="toolbar">
+    <div class="container">
+        <ul class="leftBar toolbar-left" id="login">
+            <li><span>欢迎! <a>850473807</a></span></li>
+            <li><a href="/html/login.html">登录</a></li>
+        </ul>
+        <ul class="rightBar toolbar-right">
+            <li class="shop-car"><a href="/html/cart.html">购物车0件</a><i
+                    class="caret"></i></li>
+            <li><a href="javascript:void (0)">我的优惠券</a></li>
+            <li><a href="javascript:void (0)">我的订单</a></li>
+        </ul>
+    </div>
+</section>
+
+<!--======================================logo区=======================================-->
+<header class="container">
+    <div class="logoArea leftBar">
+        <h1>
+            <a class="logo" href="javascript:void (0)">
+                <img src="../images/logo.png" alt="健康养生商城">
+                <span class="logo_text">健康养生商城</span>
+            </a>
+        </h1>
+    </div>
+</header>
+
+<!--=======================================购物车开始====================================-->
+<section class="carts">
+        <div class="container">
+            <div class="title clearfix">
+                <h3>我的购物车</h3>
+                <span>已选商品(不含运费)：<strong id="totalPrice">￥69.00</strong> <a
+                        href="javascript: void (0)">结算</a></span>
+            </div>
+            <div class="cart-box clearfix">
+                <table class="col-xs-12 clearfix" id="items">
+                    <tr class="no-h">
+                        <td class="len-lg">选择</td>
+                        <td class="len-sm no-see">单价(元)</td>
+                        <td class="len-sm no-see">优惠(元)</td>
+                        <td class="len-sm">数量</td>
+                        <td class="len-sm">金额(元)</td>
+                        <td class="len-sm">操作</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="checkbox">
+                            <img src="../images/good.JPG" alt="">
+                            <span class="img_title"><a href="javascript: void (0)">【滋恩】一级正山小种 圆罐装 50g</a></span>
+                        </td>
+                        <td class="no-see">
+                            <p><del>88.00</del></p>
+                            <p>32.00</p>
+                        </td>
+                        <td class="no-see">
+                            <p>56.00</p>
+                            <p class="discount"><span> &nbsp;3.6折&nbsp; </span></p>
+                        </td>
+                        <td>
+                            <input type="number" value="1">
+                        </td>
+                        <td>
+                            <p><strong>32.00</strong></p>
+                        </td>
+                        <td>
+                            <a class="close-bg" href="javascript: void (0)">&times;</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="checkbox">
+                            <img src="../images/good.JPG" alt="">
+                            <span><a href="javascript: void (0)">【滋恩】一级正山小种 圆罐装 50g</a></span>
+                        </td>
+                        <td class="no-see">
+                            <p><del>88.00</del></p>
+                            <p>32.00</p>
+                        </td>
+                        <td class="no-see">
+                            <p>56.00</p>
+                            <p class="discount"><span> &nbsp;3.6折&nbsp; </span></p>
+                        </td>
+                        <td>
+                            <input type="number" value="1">
+                        </td>
+                        <td>
+                            <p><strong>32.00</strong></p>
+                        </td>
+                        <td>
+                            <a class="close-bg" href="javascript: void (0)">&times;</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="carts-b clearfix">
+                <div class="clearfix">
+                    <div class="chose-pro">
+                        <p class="leftBar">
+                            <input type="checkbox">全选
+                        </p>
+                        <p class="leftBar">
+                            <input type="checkbox">清除全部
+                        </p>
+                    </div>
+                    <p class="rightBar">
+                        商品总价(不含运费)：
+                        <strong id="totalPrice2">￥32.00</strong>
+                    </p>
+                </div>
+                <div class="buy_box clearfix">
+                    <a class="go_shop" href="javascript: void (0)">继续购物</a>
+                    <a class="go_plus" href="javascript: void(0)">结算</a>
+                </div>
+            </div>
+            <script>
+                $(function () {
+
+                    $.ajax({
+                        url: main_url + "/cart/item",
+                        type: "post",
+                        dataType: "json",
+                        success: function (data) {
+                            buildCart(data);
+                        }
+                    });
+                })
+
+                function buildCart(data) {
+                    if (data == null)
+                    {
+                        window.location.href =
+                            main_url+'/html/login.html';
+                    }
+
+                    var text = '<tr class="no-h">' +
+                        '                        <td class="len-lg">选择</td>' +
+                        '                        <td class="len-sm no-see">单价(元)</td>' +
+                        '                        <td class="len-sm no-see">优惠(元)</td>' +
+                        '                        <td class="len-sm">数量</td>' +
+                        '                        <td class="len-sm">金额(元)</td>' +
+                        '                        <td class="len-sm">操作</td>' +
+                        '                    </tr>';
+                    var totalPrice = (data.totalPrice/100).toFixed(2);
+                    $("#totalPrice").html('￥'+totalPrice);
+                    $("#totalPrice2").html('￥'+totalPrice);
+
+
+                    $.each(data.items,function (i,e) {
+                        var img = e.img;
+                        var name = e.name;
+                        var platformPrice =(e.platformPrice/100).toFixed(2);
+                        var price =(e.price/100).toFixed(2);
+                        var discount =(e.discount/100).toFixed(2);
+                        var disRate =(e.disRate/10).toFixed(1);
+                        var count =e.count;
+                        var sumPrice =(e.sumPrice/100).toFixed(2);
+
+                        text+=
+                            '                    <tr>' +
+                            '                        <td>' +
+                            '                            <input type="checkbox">' +
+                            '                            <img src="../images/'+img+'" alt="">' +
+                            '                            <span class="img_title"><a href="javascript: void (0)">'+name+'</a></span>' +
+                            '                        </td>' +
+                            '                        <td class="no-see">' +
+                            '                            <p><del>'+platformPrice+'</del></p>' +
+                            '                            <p>'+price+'</p>' +
+                            '                        </td>' +
+                            '                        <td class="no-see">' +
+                            '                            <p>'+discount+'</p>' +
+                            '                            <p class="discount"><span> &nbsp;'+disRate+'折&nbsp; </span></p>' +
+                            '                        </td>' +
+                            '                        <td>' +
+                            '                            <input type="number" value="'+count+'">' +
+                            '                        </td>' +
+                            '                        <td>' +
+                            '                            <p><strong>'+sumPrice+'</strong></p>' +
+                            '                        </td>' +
+                            '                        <td>' +
+                            '                            <a class="close-bg" href="javascript: void (0)">&times;</a>' +
+                            '                        </td>' +
+                            '                    </tr>';
+                    });
+
+                    $("#items").html(text);
+                }
+            </script>
+        </div>
+    </section>
+
+
+
+
+<script src="../scripts/bootstrap.min.js"></script>
+<script src="../scripts/main.js"></script>
+<script src="../scripts/jquery.jqzoom.js"></script>
+<script src="../scripts/common.js"></script>
+
+</body>
+</html>

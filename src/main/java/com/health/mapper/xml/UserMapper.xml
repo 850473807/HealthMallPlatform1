@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.health.mapper.UserMapper">
+
+    <resultMap type="com.health.model.User" id="user" autoMapping="true">
+        <id property="id" column="U_ID" />
+        <result property="name" column="U_NAME"/>
+        <result property="password" column="U_PASSWORD"/>
+        <result property="phone" column="U_PHONE"/>
+    </resultMap>
+
+    <sql id="userSql">
+        U_ID AS Id,
+        U_NAME AS name,
+        U_PASSWORD AS password,
+        U_PHONE AS phone
+        from SYS_USER
+    </sql>
+
+    <sql id="query_user_where">
+        <if test="id!=null and id!=''">
+            and U_ID=#{id}
+        </if>
+        <if test="name!=null and name!=''">
+            and U_NAME = #{name}
+        </if>
+        <if test="password!=null and password!=''">
+            and U_PASSWORD = #{password}
+        </if>
+        <if test="phone!=null and phone!=''">
+            and U_PHONE = #{phone}
+        </if>
+    </sql>
+
+    <insert id="addUser" parameterType="User" useGeneratedKeys="true"
+            keyProperty="id">
+      INSERT INTO SYS_USER
+      (U_ID,U_NAME,U_PASSWORD,U_PHONE)VALUES(#{id},#{name},#{password},#{phone})
+    </insert>
+
+    <select id="queryUser" resultType="user">
+        select
+            <include refid="userSql"/>
+        <where>
+            <include refid="query_user_where"/>
+        </where>
+    </select>
+</mapper>

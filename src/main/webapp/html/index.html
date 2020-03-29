@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>健康养生商城</title>
+    <link rel="shortcut icon" href="../images/favicon.ico" type="x-icon">
+    <link rel="stylesheet" href="../styles/bootstrap.min.css">
+    <link rel="stylesheet" href="../styles/reset.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <!--[if lt IE 9]>
+    <!--html5shiv.js 实现html语义化标签的支持-->
+    <script src="../scripts/html5shiv.js"></script>
+    <!--respond.js实现响应式布局的支持，包括媒体查询等-->
+    <script src="../scripts/respond.min.js"></script>
+    <script src="../scripts/jquery-1.11.1.min.js"></script>
+    <script src="../scripts/jquery-form.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<!--======================================工具栏=======================================-->
+<section class="toolbar">
+    <div class="container">
+        <ul class="leftBar toolbar-left" id="login">
+            <li><span>欢迎! <a>850473807</a></span></li>
+            <li><a href="/html/login.html">登录</a></li>
+        </ul>
+        <ul class="rightBar toolbar-right">
+            <li class="shop-car"><a href="javascript: toCart()">购物车0件</a><i
+                    class="caret"></i></li>
+            <li><a href="javascript:void (0)">我的优惠券</a></li>
+            <li><a href="javascript:void (0)">我的订单</a></li>
+        </ul>
+    </div>
+</section>
+
+<!--======================================logo区=======================================-->
+<header class="container">
+    <div class="logoArea leftBar">
+        <h1>
+            <a class="logo" href="javascript:index()">
+                <img src="../images/logo.png" alt="健康养生商城">
+                <p class="logo-text">健康养生商城</p>
+                <span class="logo_text">原产地 好品牌 可定制</span>
+            </a>
+        </h1>
+    </div>
+    <div class="search-box leftBar">
+        <input type="text" id="search" class="search">
+        <button type="button" onclick="searchList(true)" class="submit">搜索
+        </button>
+    </div>
+    <div class="info rightBar">
+        <dl>
+            <dd><img src="../images/top_ico11.png" alt=""></dd>
+            <dt>100%正品</dt>
+        </dl>
+        <dl>
+            <dd><img src="../images/top_ico12.png" alt=""></dd>
+            <dt>品质有保障</dt>
+        </dl>
+        <dl>
+            <dd><img src="../images/top_ico13.png" alt=""></dd>
+            <dt>无理由退换货</dt>
+        </dl>
+        <dl class="contact">
+            <dd><img src="../images/top_ico14.png" alt=""></dd>
+            <dt>888-8888-888</dt>
+        </dl>
+    </div>
+</header>
+
+<!--======================================导航区=======================================-->
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed"
+                    data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#"><img src="../images/logo.png"
+                                                  alt=""></a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="container">
+            <div class="collapse navbar-collapse"
+                 id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav" id="category">
+                    <li ><a href="../html/index.html">首页</a></li>
+                    <li><a href="../html/list.html">生活用品</a></li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div>
+    </div><!-- /.container-fluid -->
+</nav>
+
+<!--======================================banner区 轮播图=======================================-->
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#carousel-example-generic" data-slide-to="0"
+            class="active"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="4"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+        <div class="item active item1">
+            <img src="../images/banner1.JPG" alt="...">
+        </div>
+        <div class="item item2">
+            <img src="../images/banner2.JPG" alt="...">
+        </div>
+        <div class="item item3">
+            <img src="../images/banner3.JPG" alt="...">
+        </div>
+        <div class="item item4">
+            <img src="../images/banner4.JPG" alt="...">
+        </div>
+        <div class="item item5">
+            <img src="../images/banner5.JPG" alt="...">
+        </div>
+    </div>
+
+</div>
+
+<!--===========================================商标轮播=============================-->
+<section class="container">
+    <div class="carousel slide" data-ride="carousel">
+
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner brand-inner" role="listbox">
+
+            <div class="item active brand">
+                <a href="javascript:void (0)"><img src="../images/brand5.PNG"
+                                                   alt=""></a>
+                <a href="javascript:void (0)"><img src="../images/brand6.PNG"
+                                                   alt=""></a>
+                <a href="javascript:void (0)"><img src="../images/brand7.PNG"
+                                                   alt=""></a>
+                <a href="javascript:void (0)"><img src="../images/brand8.PNG"
+                                                   alt=""></a>
+                <a href="javascript:void (0)"><img src="../images/brand9.PNG"
+                                                   alt=""></a>
+                <a href="javascript:void (0)"><img src="../images/brand10.PNG"
+                                                   alt=""></a>
+                <a href="javascript:void (0)"><img src="../images/brand11.PNG"
+                                                   alt=""></a>
+                <a href="javascript:void (0)"><img src="../images/brand12.PNG"
+                                                   alt=""></a>
+                <a href="javascript:void (0)"><img src="../images/brand13.PNG"
+                                                   alt=""></a>
+                <a href="javascript:void (0)"><img src="../images/brand14.PNG"
+                                                   alt=""></a>
+                <a class="no-see" href="javascript:void (0)"><img
+                        src="../images/brand14.PNG" alt=""></a>
+                <a class="no-see" href="javascript:void (0)"><img
+                        src="../images/brand14.PNG" alt=""></a>
+                <a class="no-see" href="javascript:void (0)"><img
+                        src="../images/brand8.PNG" alt=""></a>
+                <a class="no-see" href="javascript:void (0)"><img
+                        src="../images/brand9.PNG" alt=""></a>
+            </div>
+            <div class="item pro-img">
+                <a href="javascript:void (0)"><img src="../images/brand1.JPG"
+                                                   width="230" alt=""></a>
+                <a href="javascript:void (0)"><img src="../images/brand2.JPG"
+                                                   width="230" alt=""></a>
+                <a href="javascript:void (0)"><img src="../images/brand3.JPG"
+                                                   width="230" alt=""></a>
+                <a href="javascript:void (0)"><img src="../images/brand4.JPG"
+                                                   width="230" alt=""></a>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!--===========================================今日活动=============================-->
+<section class="activity">
+    <div class="container">
+        <div class="title">
+            <h3>优惠团购</h3>
+            <small>GROUP BUY</small>
+        </div>
+        <div class="col-md-3 col-sm-3 col-xs-6">
+            <p>
+                <a href="javascript:void (0)">
+                    <img src="../images/hot1.JPG" alt="">
+                </a>
+            </p>
+            <p>
+                <a href="javascript:void (0)">
+                    <img src="../images/hot2.JPG" alt="">
+                </a>
+            </p>
+        </div>
+        <div class="col-md-3 col-sm-3 col-xs-6">
+            <p class="active-img">
+                <a href="javascript:void (0)">
+                    <img src="../images/hot3.JPG" alt="">
+                </a>
+            </p>
+        </div>
+        <div class="col-md-3 col-sm-3 col-xs-6">
+            <p>
+                <a href="javascript:void (0)">
+                    <img src="../images/hot4.JPG" alt="">
+                </a>
+            </p>
+            <p>
+                <a href="javascript:void (0)">
+                    <img src="../images/hot5.JPG" alt="">
+                </a>
+            </p>
+        </div>
+        <div class="col-md-3 col-sm-3 col-xs-6">
+            <p>
+                <a href="javascript:void (0)">
+                    <img src="../images/hot6.JPG" alt="">
+                </a>
+            </p>
+            <p>
+                <a href="javascript:void (0)">
+                    <img src="../images/hot7.JPG" alt="">
+                </a>
+            </p>
+        </div>
+    </div>
+</section>
+
+<!--===========================================养生资讯=============================-->
+<section class="tea-life">
+    <div class="container">
+        <div class="title">
+            <h3>养生资讯</h3>
+            <small>HEALTH INFO</small>
+        </div>
+
+        <div class="leftBar life_a">
+            <ol>
+                <li class="life-w50"><a href="javascript: void (0)"><img
+                        src="../images/life_a1.jpg" alt=""></a></li>
+                <li class="life_a_info">
+                    <div class="list">
+                        <p><a href="javascript: void (0)">利桑开音茶有效调理慢性咽喉</a></p>
+                        <p><a href="javascript: void (0)">四款花草茶让你充满青春，活力四射</a>
+                        </p>
+                        <p><a href="javascript: void (0)">利桑开音茶有效调理慢性咽喉</a></p>
+                        <p><a href="javascript: void (0)">利桑开音茶有效调理慢性咽喉</a></p>
+                        <p><a href="javascript: void (0)">利桑开音茶有效调理慢性咽喉</a></p>
+                        <em><a href="javascript: void (0)"></a></em>
+                    </div>
+                </li>
+                <li class="life_a_effect">
+                    <a href="javascript: void (0)"><img
+                            src="../images/life_a2.JPG" alt=""></a>
+                    <div class="effect_content">
+                        <h4><a href="javascript: void (0)">治疗感冒 和茶小编有茶方</a></h4>
+                        <p><a href="javascript: void (0)">感冒是我们日常生活当中最常见且发病率最多的一种病。治疗感冒和茶小编有茶方，肯定会有人疑惑感冒不是不能喝茶么?其实茶叶只是其中...详细</a>
+                        </p>
+                    </div>
+                </li>
+            </ol>
+        </div>
+        <div class="leftBar no-padding life_b col-xs-12">
+            <a href="javascript: void (0)"><img src="../images/life_a3.JPG"
+                                                alt=""></a>
+            <div class="life_b_info">
+                <h4><a href="javascript: void (0)">绿茶——清热降火</a></h4>
+                <p><a href="javascript: void (0)">香叶嫩芽 口齿留香 甘醇鲜爽</a></p>
+            </div>
+        </div>
+        <div class="leftBar no-padding life_c">
+            <ol>
+                <li>
+                    <a href="javascript: void (0)"><img class="life_c_img"
+                                                        src="../images/life_c1.jpg"
+                                                        alt=""></a>
+                    <h6>
+                        <a href="javascript: void (0)">
+                            <strong>和茶百科</strong>
+                            <span>最具影响力的茶叶知识频道</span>
+                        </a>
+                    </h6>
+                </li>
+                <li class="tea_life_img"><a href="javascript: void (0)"><img
+                        src="../images/life_c2.jpg" alt=""></a></li>
+                <li class="life_c_info">
+                    <div class="list">
+                        <p><a href="javascript: void (0)">品味西湖龙井茶艺的正确方式介绍</a>
+                        </p>
+                        <p><a href="javascript: void (0)">品味西湖龙井茶艺的正确方式介绍</a>
+                        </p>
+                        <p><a href="javascript: void (0)">品味西湖龙井茶艺的正确方式介绍</a>
+                        </p>
+                        <p><a href="javascript: void (0)">品味西湖龙井茶艺的正确方式介绍</a>
+                        </p>
+                        <em><a href="javascript: void (0)"></a></em>
+                    </div>
+                </li>
+            </ol>
+        </div>
+    </div>
+</section>
+
+<!--===========================================售后服务=============================-->
+
+<section class="sale-nav">
+
+    <div class="main-nav clearfix">
+        <div class="container">
+            <p class="col-md-3 col-sm-3 nav_1">100%正品</p>
+            <p class="col-md-3 col-sm-3 nav_2">无理由退换货</p>
+            <p class="col-md-3 col-sm-3 nav_3">400城市货到付款</p>
+            <p class="col-md-3 col-sm-3 nav_4">支付宝签约商家</p>
+        </div>
+    </div>
+    <div class="small-nav clearfix">
+        <div class="container">
+            <div class="small-nav-1 clearfix">
+                <div class="small-nav-top col-md-9 col-sm-9">
+                    <ol class="col-md-2 col-sm-2">
+                        <li><strong>购物指南</strong></li>
+                        <li><a href="javascript: void (0)">账号自助服务</a></li>
+                        <li><a href="javascript: void (0)">新用户注册</a></li>
+                        <li><a href="javascript: void (0)">怎样下订单</a></li>
+                        <li><a href="javascript: void (0)">注册常见问题</a></li>
+                    </ol>
+                    <ol class="col-md-2 col-sm-2">
+                        <li><strong>支付方式</strong></li>
+                        <li><a href="javascript: void (0)">支付方式</a></li>
+                        <li><a href="javascript: void (0)">在线支付介绍</a></li>
+                        <li><a href="javascript: void (0)">汇款单招领</a></li>
+                    </ol>
+                    <ol class="col-md-2 col-sm-2">
+                        <li><strong>配送说明</strong></li>
+                        <li><a href="javascript: void (0)">运费说明</a></li>
+                        <li><a href="javascript: void (0)">配送方式</a></li>
+                        <li><a href="javascript: void (0)">配送范围</a></li>
+                    </ol>
+                    <ol class="col-md-2 col-sm-2">
+                        <li><strong>售后服务</strong></li>
+                        <li><a href="javascript: void (0)">退换货流程</a></li>
+                        <li><a href="javascript: void (0)">服务保障承诺</a></li>
+                        <li><a href="javascript: void (0)">验货与签收</a></li>
+                    </ol>
+                    <ol class="col-md-2 col-sm-2">
+                        <li><strong>常见问题</strong></li>
+                        <li><a href="javascript: void (0)">账号密码问题</a></li>
+                        <li><a href="javascript: void (0)">缺货登记</a></li>
+                        <li><a href="javascript: void (0)">健康百科</a></li>
+                    </ol>
+                </div>
+                <div class="col-md-3 col-sm-3 service"><img src="../images/fot_tel.png" alt="服务热线"></div>
+            </div>
+            <div class="small_nav_bottom">
+                <p class="about-heTEA">
+                    <a href="javascript: void (0)">商城首页</a>
+                    <a href="javascript: void (0)">关于商城</a>
+                    <a href="javascript: void (0)">帮助中心</a>
+                    <a href="javascript: void (0)">交易条款</a>
+                    <a href="javascript: void (0)">诚征英才</a>
+                    <a href="javascript: void (0)">联系我们</a>
+                </p>
+                <p class="links">
+                    <a class="defer" href="javascript: void (0)">友情链接</a>
+                    <a href="javascript: void (0)">乌龙茶</a>
+                    <a href="javascript: void (0)">绿茶</a>
+                    <a href="javascript: void (0)">普洱茶</a>
+                    <a href="javascript: void (0)">黑茶</a>
+                    <a href="javascript: void (0)">村村通商城</a>
+                    <a href="javascript: void (0)">土地资源网</a>
+                    <a href="javascript: void (0)">在昆明</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <!--===========================================版权区=============================-->
+    <div class="copyRight clearfix">
+        <div class="container">
+            <div class="leftBar">
+                <p>Copyright &copy; 2009-2015 health.cn All Rights Reserved.
+                    浙ICP证：浙10202223-1号</p>
+                <p>国民健康养生网络科技有限公司 版权所有 并保留所有权利 禁止非法复制</p>
+            </div>
+            <div class="rightBar">
+                <img src="../images/fot_ico1.png" alt="">
+                <img src="../images/fot_ico2.png" alt="">
+            </div>
+        </div>
+    </div>
+</section>
+
+<script type="text/javascript">
+
+    $(function () {
+        initPage();
+    });
+</script>
+<!--==========================================手机版的返回顶部============================-->
+<a class="return top_btn" href="javascript: void (0)"><img
+        src="../images/ico5.png" alt="top"/></a>
+
+<script src="../scripts/bootstrap.min.js"></script>
+<script src="../scripts/main.js"></script>
+<script src="../scripts/jquery.jqzoom.js"></script>
+<script src="../scripts/common.js"></script>
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>健康养生商城</title>
+    <link rel="shortcut icon" href="../images/favicon.ico" type="x-icon">
+    <link rel="stylesheet" href="../styles/bootstrap.min.css">
+    <link rel="stylesheet" href="../styles/reset.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <!--[if lt IE 9]>
+    <!--html5shiv.js 实现html语义化标签的支持-->
+    <script src="../scripts/html5shiv.js"></script>
+    <!--respond.js实现响应式布局的支持，包括媒体查询等-->
+    <script src="../scripts/respond.min.js"></script>
+    <script src="../scripts/jquery-1.11.1.min.js"></script>
+    <script src="../scripts/jquery-form.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<!--======================================工具栏=======================================-->
+<section class="toolbar">
+    <div class="container">
+        <ul class="leftBar toolbar-left" id="login">
+            <li><span>欢迎! <a>850473807</a></span></li>
+            <li><a href="/html/login.html">登录</a></li>
+        </ul>
+        <ul class="rightBar toolbar-right">
+            <li class="shop-car"><a href="/html/cart.html">购物车0件</a><i
+                    class="caret"></i></li>
+            <li><a href="javascript:void (0)">我的优惠券</a></li>
+            <li><a href="javascript:void (0)">我的订单</a></li>
+        </ul>
+    </div>
+</section>
+
+<!--======================================logo区=======================================-->
+<header class="container">
+    <div class="logoArea leftBar">
+        <h1>
+            <a class="logo" href="javascript:index()">
+                <img src="../images/logo.png" alt="健康养生商城">
+                <span class="logo_text">健康养生商城</span>
+            </a>
+        </h1>
+    </div>
+    <div class="search-box leftBar">
+        <input type="text" id="search" class="search">
+        <button type="button" onclick="searchList()" class="submit">搜索</button>
+    </div>
+    <div class="info rightBar">
+        <dl>
+            <dd><img src="../images/top_ico11.png" alt=""></dd>
+            <dt>100%正品</dt>
+        </dl>
+        <dl>
+            <dd><img src="../images/top_ico12.png" alt=""></dd>
+            <dt>品质有保障</dt>
+        </dl>
+        <dl>
+            <dd><img src="../images/top_ico13.png" alt=""></dd>
+            <dt>无理由退换货</dt>
+        </dl>
+        <dl class="contact">
+            <dd><img src="../images/top_ico14.png" alt=""></dd>
+            <dt>888-8888-888</dt>
+        </dl>
+    </div>
+</header>
+
+
+
+
+<!--======================================导航区=======================================-->
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed"
+                    data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#"><img src="../images/logo.png"
+                                                  alt=""></a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="container">
+            <div class="collapse navbar-collapse"
+                 id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav" id="category">
+                    <li><a href="../html/index.html">首页</a></li>
+                    <li><a href="../html/list.html">生活用品</a></li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div>
+    </div><!-- /.container-fluid -->
+</nav>
+
+<!--========================================产品列表=====================================-->
+<section class="list-content">
+    <div class="container">
+        <div class="leftBar">
+            <div class="right-content">
+                <div class="link-nav">
+                    <a href="javascript: void (0)">首页</a>
+                    <span>&gt;</span>
+                    <a href="javascript: void (0)">保健用品</a>
+                </div>
+                <div class="pro-chose">
+                    <h6>
+                        <strong>家居生活</strong>
+                        - 商品筛选
+                    </h6>
+                    <ul id="condition">
+                        <li id="brand">
+                            <span>品牌</span>
+                            <a href="javascript: void (0)">全部</a>
+                            <p><input value="1" type="checkbox"/>顶峰</p>
+                            <p><input value="2" type="checkbox"/>奇松</p>
+                            <p><input value="3" type="checkbox"/>兹恩</p>
+                        </li>
+                        <li id="price">
+                            <span>价格</span>
+                            <a href="javascript: void (0)">全部</a>
+                            <p><input value="1" type="checkbox"/>100元以下</p>
+                            <p><input value="2" type="checkbox"/>101-300元</p>
+                            <p><input value="3" type="checkbox"/>300元以上</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="list-pro clearfix">
+                    <p class="leftBar">
+                        <span>排序方式</span>
+                        <a class="rise" href="javascript: void (0)">价格</a>
+                        <a class="dis-rise" href="javascript: void (0)">销量</a>
+                        <a class="rise" href="javascript: void (0)">评论</a>
+                    </p>
+                    <ul class="rightBar">
+                        <li class="on block"><a class="img" href="javascript: void (0)"></a></li>
+                        <li class="menu"><a class="list_img" href="javascript: void (0)"></a></li>
+                    </ul>
+                </div>
+
+                <div class="img-display">
+                    <ul class="block-list-box" id="block-list-box">
+                        <li class="block-list">
+                            <a href="details.html"><img src="../images/good.JPG" alt=""/>【顶峰】2016新茶 特级明前五星-致远-西湖龙井单罐50g</a>
+                            <p class="price"><strong>¥ 69.00</strong></p>
+                            <div class="market-price">
+                                <small>市场价<del>￥228.00</del></small>
+                                <p><a href="javascript: void (0)">11719</a>人讨论</p>
+                            </div>
+                            <p class="buy-btn">
+                                <a href="javascript: void (0)">立刻购买</a>
+                                <a href="javascript: void (0)">加入购物车</a>
+                            </p>
+                        </li>
+                        <li class="block-list">
+                            <img src="../images/good.JPG" alt=""/>
+                            <a href="javascript: void (0)">【顶峰】2016新茶 特级明前五星-致远-西湖龙井单罐50g</a>
+                            <p class="price"><strong>¥ 69.00</strong></p>
+                            <div class="market-price">
+                                <small>市场价<del>￥228.00</del></small>
+                                <p><a href="javascript: void (0)">11719</a>人讨论</p>
+                            </div>
+                            <p class="buy-btn">
+                                <a href="javascript: void (0)">立刻购买</a>
+                                <a href="javascript: void (0)">加入购物车</a>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="page rightBar" id="page">
+                    <span>第 1页， 共 5 页 [共56件商品]</span>
+                    <p>
+                        <a class="current" href="javascript: void (0)">1</a>
+                        <a href="javascript: void (0)">2</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--==========================================手机版的返回顶部============================-->
+<a class="return top_btn" href="javascript: void (0)"><img src="../images/ico5.png" alt="top"/></a>
+
+<script type="text/javascript">
+    $(function () {
+        initPage();
+        initList();
+    });
+
+    function initList() {
+        $.ajax({
+            url: main_url + "/prod/init1",
+            type: "post",
+            dataType: "json",
+            success: function (data) {
+                buildPage(data);
+            }
+        });
+    }
+
+    function pageQuery(page) {
+        $.ajax({
+            url: main_url + "/prod/qryPage?currentPage="+page,
+            type: "post",
+            dataType: "json",
+            success: function (data) {
+                buildPage(data);
+            }
+        });
+    }
+</script>
+
+<script src="../scripts/bootstrap.min.js"></script>
+<script src="../scripts/main.js"></script>
+<script src="../scripts/jquery.jqzoom.js"></script>
+<script src="../scripts/common.js"></script>
+</body>
+</html>

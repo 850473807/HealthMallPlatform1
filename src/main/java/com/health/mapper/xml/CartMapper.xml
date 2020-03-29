@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.health.mapper.CartMapper">
+
+    <resultMap type="com.health.model.Cart" id="cart"
+               autoMapping="true">
+        <id property="id" column="c_id" />
+    </resultMap>
+
+    <sql id="CartSql">
+        u_Id AS uId,
+        p_Id AS pId,
+        p_count AS count
+        from Cart
+    </sql>
+
+    <sql id="query_Cart_where">
+        1=1
+        <if test="uId!=null and uId!=''">
+            and u_Id=#{uId}
+        </if>
+        <if test="pId!=null and pId!=''">
+            and p_Id = #{pId}
+        </if>
+    </sql>
+
+    <insert id="add2Cart" parameterType="Cart" useGeneratedKeys="true"
+            keyProperty="id">
+      INSERT INTO Cart
+      (u_id,p_id,p_count)VALUES(#{uId},#{pId},#{count})
+    </insert>
+
+    <select id="qryCartByUser" parameterType="java.lang.Long" resultType="Cart">
+        select
+        <include refid="CartSql"/>
+        where u_Id=#{uId}
+    </select>
+
+    <select id="queryCart" resultType="Cart">
+        select
+        <include refid="CartSql"/>
+        <where>
+            <include refid="query_Cart_where"/>
+        </where>
+    </select>
+
+    <select id="qryOldCart" resultType="Cart">
+        select
+        <include refid="CartSql"/>
+        <where>
+            <include refid="query_Cart_where"/>
+        </where>
+    </select>
+
+    <update id="updateCart" parameterType="Cart">
+        update cart set p_count = #{count}
+        where u_Id=#{uId} and p_Id = #{pId}
+    </update>
+
+
+</mapper>
